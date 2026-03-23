@@ -22,7 +22,9 @@ export const metadata: Metadata = {
   description: siteContent.meta.description,
   keywords: [...siteContent.meta.keywords],
   icons: {
-    icon: "/favicon.png"
+    icon: [{ url: "/favicon.png?v=2", type: "image/png" }],
+    shortcut: "/favicon.png?v=2",
+    apple: "/favicon.png?v=2"
   },
   openGraph: {
     type: "website",

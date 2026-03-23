@@ -81,7 +81,7 @@ export function MobileStickyCta() {
           className={`${buttonBase} ${briefClass}`}
         >
           <SiteIcon name="brief" className="mb-1 h-4 w-4" />
-          Brief
+          Formulario
         </button>
       </div>
     </div>
