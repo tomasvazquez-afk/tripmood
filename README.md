@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿# TripMood
 
 Home comercial premium para TripMood construida con Next.js App Router, TypeScript, Tailwind CSS y Supabase.
@@ -42,3 +43,6 @@ El SQL inicial está en [supabase/schema.sql](./supabase/schema.sql).
 
 
 
+=======
+# tripmood
+>>>>>>> origin/main
