@@ -47,7 +47,7 @@ export function InspirationGrid() {
               {item.image ? (
                 <Image
                   src={item.image}
-                  alt={item.title}
+                  alt={`${item.title} - inspiración de viaje personalizada en TripMood`}
                   fill
                   className="object-cover"
                   sizes="(min-width: 1280px) 28vw, (min-width: 1024px) 45vw, 100vw"

@@ -9,16 +9,22 @@
     legajo: "Legajo habilitante · completar"
   },
   meta: {
-    title: "TripMood | Viajes a medida con atención personalizada",
+    title: "Viajes a medida y viajes personalizados en Argentina | TripMood",
     description:
-      "TripMood diseña viajes a medida con atención cercana, acompañamiento real y una experiencia premium pensada para convertir desde mobile.",
-    ogTitle: "TripMood | Viajes únicos para vivir el destino a tu manera",
+      "TripMood es una agencia de viajes en Argentina especializada en viajes a medida y viajes personalizados. Planificamos tu viaje según tus gustos, fechas y presupuesto, con atención cercana por WhatsApp.",
+    ogTitle: "TripMood | Agencia de viajes a medida y viajes personalizados",
     ogDescription:
-      "Escribinos por WhatsApp o completá tu formulario para empezar a planificar un viaje 100% a medida.",
+      "Agencia de viajes a medida en Argentina. Diseñamos viajes personalizados con atención cercana, ideas a medida y contacto directo por WhatsApp.",
     keywords: [
+      "agencia de viajes",
       "viajes a medida",
-      "agencia boutique",
       "viajes personalizados",
+      "agencia de viajes argentina",
+      "viajes a medida argentina",
+      "asesoramiento de viajes",
+      "itinerarios personalizados",
+      "planificacion de viajes",
+      "agencia de turismo",
       "asesoría de viajes",
       "tripmood"
     ]

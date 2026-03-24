@@ -21,6 +21,31 @@ export const metadata: Metadata = {
   title: siteContent.meta.title,
   description: siteContent.meta.description,
   keywords: [...siteContent.meta.keywords],
+  alternates: {
+    canonical: siteUrl
+  },
+  category: "travel",
+  applicationName: siteContent.brand.name,
+  referrer: "origin-when-cross-origin",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1
+    }
+  },
+  authors: [{ name: siteContent.brand.name, url: siteUrl }],
+  creator: siteContent.brand.name,
+  publisher: siteContent.brand.name,
   icons: {
     icon: [{ url: "/favicon.png?v=2", type: "image/png" }],
     shortcut: "/favicon.png?v=2",
@@ -56,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={manrope.variable}>
+    <html lang="es-AR" className={manrope.variable}>
       <body className="bg-bg font-sans text-text antialiased">
         <Script id="tripmood-datalayer" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];`}
