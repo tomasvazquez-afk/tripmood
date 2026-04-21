@@ -9,7 +9,7 @@
     legajo: "Legajo habilitante · 20968"
   },
   meta: {
-    title: "Viajes a medida y viajes personalizados en Argentina | HaruTravel",
+    title: "Haru Travel | Viajes y experiencias a medida",
     description:
       "HaruTravel es una agencia de viajes en Argentina especializada en viajes a medida y viajes personalizados. Planificamos tu viaje según tus gustos, fechas y presupuesto, con atención cercana por WhatsApp.",
     ogTitle: "HaruTravel | Agencia de viajes a medida y viajes personalizados",
@@ -197,8 +197,8 @@
       "Creemos que un viaje no debería sentirse genérico. Por eso trabajamos de forma cercana, entendiendo qué busca cada viajero y acompañándolo en todo el proceso."
     ],
     highlights: [
-      { label: "Legajo habilitante", value: "Legajo habilitante 20968" },
-      { label: "Mail de contacto", value: "reservas@tripmoodtravel.com" },
+      { label: "Legajo habilitante", value: "20968" },
+      { label: "Mail de contacto", value: "reservas@harutravelagency.com" },
       { label: "Atención personalizada", value: "Antes, durante y después del viaje" }
     ]
   },

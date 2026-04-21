@@ -68,7 +68,7 @@ export function Header() {
                 : "border-white/30 bg-white/12 text-white hover:bg-white/18"
             )}
           >
-            Completa el formulario
+            Completá el formulario
           </a>
           <a
             href={buildWhatsAppUrl("Quiero hablar con HaruTravel por WhatsApp.")}
@@ -130,7 +130,7 @@ export function Header() {
             onClick={() => setMenuOpen(false)}
             className="mt-2 inline-flex w-full items-center justify-center rounded-full border border-white/30 bg-white/12 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/20"
           >
-            Completa el formulario
+            Completá el formulario
           </a>
         </div>
       ) : null}

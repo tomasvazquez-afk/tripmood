@@ -1,4 +1,5 @@
-﻿import { normalizePhone } from "@/lib/utils";
+import { siteContent } from "@/content/site-content";
+import { normalizePhone } from "@/lib/utils";
 
 const baseMessage = "Hola HaruTravel, quiero empezar a planificar un viaje a medida.";
 
@@ -7,7 +8,7 @@ export function buildWhatsAppMessage(extra?: string) {
 }
 
 export function buildWhatsAppUrl(extra?: string) {
-  const rawNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5491100000000";
+  const rawNumber = siteContent.brand.whatsappDisplay;
   const phone = normalizePhone(rawNumber);
   const message = buildWhatsAppMessage(extra);
 

@@ -10,7 +10,7 @@ export function Footer() {
         <div className="flex flex-col items-start text-left">
           <BrandMark />
           <p className="mt-5 max-w-md text-sm leading-7 text-muted">
-            Agencia de viajes en Argentina especializada en viajes a medida y viajes personalizados, con atención cercana y propuestas pensadas para vos.
+            Una forma diferente de planear y vivir tus viajes.
           </p>
         </div>
 
