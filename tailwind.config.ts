@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "brand-primary": "#0A2540",
-        "brand-secondary": "#1D4ED8",
-        "brand-accent": "#2DD4BF",
+        "brand-primary": "#4E1F30",
+        "brand-secondary": "#FF649C",
+        "brand-accent": "#FFFFFF",
         bg: "#F6F9FC",
         surface: "#FFFFFF",
         text: "#0F172A",
@@ -22,20 +22,20 @@ const config: Config = {
         paper: "#F6F9FC",
         ink: "#0F172A",
         mist: "#6B7280",
-        bronze: "#2DD4BF",
-        espresso: "#0A2540",
-        olive: "#1D4ED8"
+        bronze: "#FFFFFF",
+        espresso: "#4E1F30",
+        olive: "#FF649C"
       },
       fontFamily: {
         sans: ["var(--font-manrope)", "sans-serif"],
         display: ["var(--font-manrope)", "sans-serif"]
       },
       boxShadow: {
-        soft: "0 18px 60px rgba(10, 37, 64, 0.08)",
-        float: "0 28px 80px rgba(10, 37, 64, 0.16)"
+        soft: "0 18px 60px rgba(78, 31, 48, 0.08)",
+        float: "0 28px 80px rgba(78, 31, 48, 0.16)"
       },
       backgroundImage: {
-        "hero-radial": "radial-gradient(circle at top, rgba(45,212,191,0.18), transparent 42%)"
+        "hero-radial": "radial-gradient(circle at top, rgba(255,255,255,0.18), transparent 42%)"
       }
     }
   },

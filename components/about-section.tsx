@@ -3,7 +3,7 @@ import { siteContent } from "@/content/site-content";
 
 export function AboutSection() {
   return (
-    <section id="sobre-tripmood" className="section-space">
+    <section id="sobre-harutravel" className="section-space">
       <div className="section-shell space-y-8">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
           <SectionHeading eyebrow={siteContent.about.eyebrow} title={siteContent.about.title} />

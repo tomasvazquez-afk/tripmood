@@ -1,6 +1,6 @@
-﻿# TripMood
+# HaruTravel
 
-Home comercial premium para TripMood construida con Next.js App Router, TypeScript, Tailwind CSS y Supabase.
+Home comercial premium para HaruTravel construida con Next.js App Router, TypeScript, Tailwind CSS y Supabase.
 
 ## Stack
 
@@ -13,10 +13,10 @@ Home comercial premium para TripMood construida con Next.js App Router, TypeScri
 
 ## Desarrollo
 
-1. Copiá `.env.example` como `.env.local`.
-2. Completá las variables de entorno.
-3. Instalá dependencias con `npm install`.
-4. Levantá el proyecto con `npm run dev`.
+1. Copia `.env.example` como `.env.local`.
+2. Completa las variables de entorno.
+3. Instala dependencias con `npm install`.
+4. Levanta el proyecto con `npm run dev`.
 
 ## Variables de entorno
 
@@ -39,9 +39,3 @@ El SQL inicial está en [supabase/schema.sql](./supabase/schema.sql).
 - `app/api/leads/route.ts` guarda leads en Supabase e intenta sincronizar el payload a Google Sheets por webhook sin bloquear la UX.
 - `app/api/events/route.ts` persiste eventos de conversión y deja preparada la persistencia de bookings cuando Cal.com envía metadata suficiente.
 - `lib/analytics.ts` deja lista la arquitectura para GA4, GTM vía `dataLayer` y Meta Pixel.
-
-
-
-=======
-# tripmood
- origin/main

@@ -47,13 +47,13 @@ export function InspirationGrid() {
               {item.image ? (
                 <Image
                   src={item.image}
-                  alt={`${item.title} - inspiración de viaje personalizada en TripMood`}
+                  alt={`${item.title} - inspiración de viaje personalizada en HaruTravel`}
                   fill
                   className="object-cover"
                   sizes="(min-width: 1280px) 28vw, (min-width: 1024px) 45vw, 100vw"
                 />
               ) : null}
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(10,37,64,0.24)_0%,rgba(10,37,64,0.46)_45%,rgba(10,37,64,0.72)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(78,31,48,0.24)_0%,rgba(78,31,48,0.46)_45%,rgba(78,31,48,0.72)_100%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_32%)]" />
               <div className="relative flex h-full flex-col justify-between gap-8">
                 <div>
@@ -71,7 +71,7 @@ export function InspirationGrid() {
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent("inspiration_cta_click", { ctaLocation: "inspiration" })}
-            className="inline-flex items-center justify-center rounded-full bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-primary shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-[#24c0ae] hover:text-brand-primary hover:shadow-md active:translate-y-0 active:scale-[0.99]"
+            className="inline-flex items-center justify-center rounded-full bg-brand-accent px-6 py-3.5 text-sm font-semibold text-brand-primary shadow-sm transition duration-300 hover:-translate-y-0.5 hover:bg-brand-secondary hover:text-white hover:shadow-md active:translate-y-0 active:scale-[0.99]"
           >
             Contanos qué tipo de viaje soñás
             <span className="ml-2"><SiteIcon name="arrow" /></span>

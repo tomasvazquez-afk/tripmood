@@ -31,7 +31,7 @@ export function Hero() {
   return (
     <section id="inicio" data-sticky-tone="dark" className="relative isolate min-h-[100svh] overflow-hidden bg-brand-primary text-white">
       <video
-        className="hero-video pointer-events-none absolute inset-0 h-full w-full object-cover opacity-70"
+        className="hero-video pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90"
         autoPlay
         muted
         playsInline
@@ -42,15 +42,15 @@ export function Hero() {
       >
         <source src={siteContent.video.src} type="video/mp4" />
       </video>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(10,37,64,0.48)_0%,rgba(10,37,64,0.56)_40%,rgba(10,37,64,0.84)_100%)]" />
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(45,212,191,0.22),transparent_28%),radial-gradient(circle_at_left_center,rgba(29,78,216,0.2),transparent_32%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(78,31,48,0.16)_0%,rgba(78,31,48,0.22)_40%,rgba(78,31,48,0.38)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.14),transparent_28%),radial-gradient(circle_at_left_center,rgba(255,100,156,0.08),transparent_32%)]" />
 
       <div className="section-shell relative z-10 flex min-h-[100svh] items-center py-20 pt-28 sm:py-32 lg:py-36">
         <div className="w-full max-w-3xl">
           <span className="eyebrow">{siteContent.hero.eyebrow}</span>
           <h1 className="max-w-4xl text-[2.85rem] leading-[0.96] text-white sm:text-6xl lg:text-7xl">
             {headlineBefore}
-            {headlineHighlight ? <span className="text-brand-accent">{headlineHighlight}</span> : null}
+            {headlineHighlight ? <span className="text-brand-secondary">{headlineHighlight}</span> : null}
             {headlineAfter}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-7 text-white/90 sm:text-lg">

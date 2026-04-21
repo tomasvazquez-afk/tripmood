@@ -40,7 +40,7 @@ export function TrustPulseCards() {
             {siteContent.differentiators.items.map((item, index) => (
               <article
                 key={item.title}
-                className="group relative overflow-hidden rounded-[2rem] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(45,212,191,0.08)_100%)] p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/30"
+                className="group relative overflow-hidden rounded-[2rem] border border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.96)_0%,rgba(255,100,156,0.08)_100%)] p-6 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-brand-accent/30"
               >
                 <div
                   className={cn(

@@ -1,18 +1,18 @@
 ﻿export const siteContent = {
   brand: {
-    name: "TripMood",
+    name: "HaruTravel",
     descriptor: "Agencia boutique de viajes a medida",
-    email: "reservas@tripmoodtravel.com",
+    email: "reservas@harutravelagency.com",
     whatsappDisplay: "+54 9 11 7061-7100",
-    instagramHandle: "@travel.tripmood",
-    instagramUrl: "https://instagram.com/tripmood",
-    legajo: "Legajo habilitante · completar"
+    instagramHandle: "@harutravelagency",
+    instagramUrl: "https://instagram.com/harutravelagency",
+    legajo: "Legajo habilitante · 20968"
   },
   meta: {
-    title: "Viajes a medida y viajes personalizados en Argentina | TripMood",
+    title: "Viajes a medida y viajes personalizados en Argentina | HaruTravel",
     description:
-      "TripMood es una agencia de viajes en Argentina especializada en viajes a medida y viajes personalizados. Planificamos tu viaje según tus gustos, fechas y presupuesto, con atención cercana por WhatsApp.",
-    ogTitle: "TripMood | Agencia de viajes a medida y viajes personalizados",
+      "HaruTravel es una agencia de viajes en Argentina especializada en viajes a medida y viajes personalizados. Planificamos tu viaje según tus gustos, fechas y presupuesto, con atención cercana por WhatsApp.",
+    ogTitle: "HaruTravel | Agencia de viajes a medida y viajes personalizados",
     ogDescription:
       "Agencia de viajes a medida en Argentina. Diseñamos viajes personalizados con atención cercana, ideas a medida y contacto directo por WhatsApp.",
     keywords: [
@@ -26,7 +26,7 @@
       "planificacion de viajes",
       "agencia de turismo",
       "asesoría de viajes",
-      "tripmood"
+      "harutravel"
     ]
   },
   video: {
@@ -35,7 +35,7 @@
   },
   navigation: [
     { label: "Inicio", href: "#inicio" },
-    { label: "Sobre TripMood", href: "#sobre-tripmood" },
+    { label: "Sobre HaruTravel", href: "#sobre-harutravel" },
     { label: "Cómo funciona", href: "#como-funciona" },
     { label: "Por qué elegirnos", href: "#por-que-elegirnos" },
     { label: "Inspiración", href: "#inspiracion" },
@@ -45,7 +45,7 @@
     eyebrow: "Viajes a medida, pensados para vos",
     headline: "Diseñamos viajes únicos para que vivas el destino a tu manera",
     description:
-      "En TripMood creamos experiencias únicas a través de viajes personalizados. Nos encargamos de cada detalle para que solo tengas que disfrutar del destino.",
+      "En HaruTravel creamos experiencias únicas a través de viajes personalizados. Nos encargamos de cada detalle para que solo tengas que disfrutar del destino.",
     helper: "Respondemos rápido y te ayudamos a definir tu viaje ideal.",
     trust: [
       "Atención 100% personalizada",
@@ -143,7 +143,7 @@
   },
   differentiators: {
     eyebrow: "Por qué elegirnos",
-    title: "¿Por qué elegir TripMood?",
+    title: "¿Por qué elegir HaruTravel?",
     description:
       "Convertimos tus ideas de viaje en experiencias únicas, con atención cercana y acompañamiento en cada etapa.",
     items: [
@@ -191,13 +191,13 @@
   },
   about: {
     eyebrow: "Sobre nosotros",
-    title: "Sobre TripMood",
+    title: "Sobre HaruTravel",
     paragraphs: [
-      "TripMood nace de la pasión por viajar y por crear experiencias únicas. Diseñamos viajes personalizados cuidando cada detalle, para que cada persona viva el destino de una forma auténtica, cómoda y especial.",
+      "HaruTravel nace de la pasión por viajar y por crear experiencias únicas. Diseñamos viajes personalizados cuidando cada detalle, para que cada persona viva el destino de una forma auténtica, cómoda y especial.",
       "Creemos que un viaje no debería sentirse genérico. Por eso trabajamos de forma cercana, entendiendo qué busca cada viajero y acompañándolo en todo el proceso."
     ],
     highlights: [
-      { label: "Legajo habilitante", value: "Completar" },
+      { label: "Legajo habilitante", value: "Legajo habilitante 20968" },
       { label: "Mail de contacto", value: "reservas@tripmoodtravel.com" },
       { label: "Atención personalizada", value: "Antes, durante y después del viaje" }
     ]
@@ -241,7 +241,7 @@
   footer: {
     quickLinks: [
       { label: "Inicio", href: "#inicio" },
-      { label: "Sobre TripMood", href: "#sobre-tripmood" },
+      { label: "Sobre HaruTravel", href: "#sobre-harutravel" },
       { label: "Cómo funciona", href: "#como-funciona" },
       { label: "Por qué elegirnos", href: "#por-que-elegirnos" },
       { label: "Inspiración", href: "#inspiracion" },

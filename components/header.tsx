@@ -71,7 +71,7 @@ export function Header() {
             Completa el formulario
           </a>
           <a
-            href={buildWhatsAppUrl("Quiero hablar con TripMood por WhatsApp.")}
+            href={buildWhatsAppUrl("Quiero hablar con HaruTravel por WhatsApp.")}
             target="_blank"
             rel="noreferrer"
             className={cn(
@@ -117,7 +117,7 @@ export function Header() {
             ))}
           </nav>
           <a
-            href={buildWhatsAppUrl("Quiero hablar con TripMood por WhatsApp.")}
+            href={buildWhatsAppUrl("Quiero hablar con HaruTravel por WhatsApp.")}
             target="_blank"
             rel="noreferrer"
             onClick={() => setMenuOpen(false)}

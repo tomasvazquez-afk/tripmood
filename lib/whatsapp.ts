@@ -1,6 +1,6 @@
 ﻿import { normalizePhone } from "@/lib/utils";
 
-const baseMessage = "Hola TripMood, quiero empezar a planificar un viaje a medida.";
+const baseMessage = "Hola HaruTravel, quiero empezar a planificar un viaje a medida.";
 
 export function buildWhatsAppMessage(extra?: string) {
   return [baseMessage, extra].filter(Boolean).join(" ");

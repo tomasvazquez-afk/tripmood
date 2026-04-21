@@ -14,9 +14,9 @@ export function SeoJsonLd() {
       "@type": "Organization",
       "@id": organizationId,
       name: siteContent.brand.name,
-      alternateName: "TripMood Travel",
+      alternateName: "HaruTravel",
       url: siteUrl,
-      logo: absoluteUrl("/logo-oscuro.png"),
+      logo: absoluteUrl("/Logo%20Oscuro%20II.png"),
       image: absoluteUrl("/hero-poster.jpg"),
       description:
         "Agencia de viajes en Argentina especializada en viajes a medida y viajes personalizados con atención cercana por WhatsApp.",

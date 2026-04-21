@@ -16,7 +16,7 @@ export function normalizePhone(value: string) {
 }
 
 export function buildCalEmbedUrl(rawUrl?: string | null) {
-  const fallback = "https://cal.com/tu-usuario/tripmood-intro";
+  const fallback = "https://cal.com/tu-usuario/harutravel-intro";
   const baseUrl = rawUrl?.trim() || fallback;
 
   try {

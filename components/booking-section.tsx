@@ -109,7 +109,7 @@ export function BookingSection() {
           <div className="surface-panel overflow-hidden rounded-[2.25rem] border border-border p-3 sm:p-4">
             <div className="rounded-[1.6rem] border border-border bg-surface p-2 shadow-sm">
               <iframe
-                title="Agenda TripMood"
+                title="Agenda HaruTravel"
                 src={calLink}
                 loading="lazy"
                 className="h-[760px] w-full rounded-[1.2rem] border-0 bg-white"

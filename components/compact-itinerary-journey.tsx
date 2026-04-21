@@ -7,7 +7,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const cardConfig = [
   {
-    bgClass: "border-[#153657] bg-gradient-to-br from-[#0A2540] via-[#143454] to-[#1A3D63]",
+    bgClass: "border-[#6A2A42] bg-gradient-to-br from-[#4E1F30] via-[#6A2A42] to-[#8A3656]",
     numberClass: "text-white/10 group-hover:text-white/18",
     iconBgClass: "bg-white/14",
     iconColorClass: "text-white",
@@ -16,7 +16,7 @@ const cardConfig = [
     materialIcon: "lightbulb"
   },
   {
-    bgClass: "border-[#2B5476] bg-gradient-to-br from-[#1A3D63] via-[#345A7B] to-[#4A7290]",
+    bgClass: "border-[#C24C79] bg-gradient-to-br from-[#8A3656] via-[#C24C79] to-[#FF649C]",
     numberClass: "text-white/12 group-hover:text-white/18",
     iconBgClass: "bg-white/14",
     iconColorClass: "text-white",
@@ -25,7 +25,7 @@ const cardConfig = [
     materialIcon: "brush"
   },
   {
-    bgClass: "border-[#A8C2D6] bg-gradient-to-br from-[#5C87A8] via-[#7B9FBA] to-[#A3BED1]",
+    bgClass: "border-[#F3BDD0] bg-gradient-to-br from-[#D98AA9] via-[#EDB1C6] to-[#F8D8E4]",
     numberClass: "text-white/22 group-hover:text-white/32",
     iconBgClass: "bg-white/50",
     iconColorClass: "text-brand-primary",
@@ -34,7 +34,7 @@ const cardConfig = [
     materialIcon: "tune"
   },
   {
-    bgClass: "border-[#D2EFEB] bg-gradient-to-br from-[#DFF6F2] via-[#ECFBF8] to-[#F7FFFD]",
+    bgClass: "border-[#F7DCE7] bg-gradient-to-br from-[#FAEEF3] via-[#FFF7FA] to-[#FFFFFF]",
     numberClass: "text-brand-primary/10 group-hover:text-brand-primary/16",
     iconBgClass: "bg-brand-primary",
     iconColorClass: "text-white",
@@ -64,7 +64,7 @@ export function CompactItineraryJourney() {
             target="_blank"
             rel="noreferrer"
             onClick={() => trackEvent("how_it_works_whatsapp_click", { ctaLocation: "how_it_works" })}
-            className="inline-flex shrink-0 items-center justify-center rounded-full bg-brand-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-brand-primary transition duration-300 hover:scale-[1.02] hover:bg-[#24c0ae] hover:text-brand-primary"
+            className="inline-flex shrink-0 items-center justify-center rounded-full bg-brand-accent px-8 py-4 text-sm font-semibold uppercase tracking-[0.22em] text-brand-primary transition duration-300 hover:scale-[1.02] hover:bg-brand-secondary hover:text-white"
           >
             Empezar mi viaje
           </a>

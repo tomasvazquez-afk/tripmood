@@ -40,8 +40,8 @@ export function MobileStickyCta() {
   }, []);
 
   const wrapperClass = isDarkContext
-    ? "border-white/20 bg-brand-primary/84 text-white shadow-[0_-16px_36px_rgba(10,37,64,0.38)]"
-    : "border-border/85 bg-white/92 text-brand-primary shadow-[0_-14px_30px_rgba(10,37,64,0.14)]";
+    ? "border-white/20 bg-brand-primary/84 text-white shadow-[0_-16px_36px_rgba(78,31,48,0.38)]"
+    : "border-border/85 bg-white/92 text-brand-primary shadow-[0_-14px_30px_rgba(78,31,48,0.14)]";
 
   const buttonBase =
     "flex flex-col items-center justify-center rounded-2xl px-3 py-3 text-xs font-semibold shadow-sm transition duration-300 hover:brightness-[1.06] active:scale-[0.98]";
