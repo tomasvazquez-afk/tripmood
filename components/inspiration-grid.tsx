@@ -53,8 +53,8 @@ export function InspirationGrid() {
                   sizes="(min-width: 1280px) 28vw, (min-width: 1024px) 45vw, 100vw"
                 />
               ) : null}
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(78,31,48,0.24)_0%,rgba(78,31,48,0.46)_45%,rgba(78,31,48,0.72)_100%)]" />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.2),transparent_32%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(78,31,48,0.16)_0%,rgba(78,31,48,0.22)_40%,rgba(78,31,48,0.38)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.14),transparent_28%),radial-gradient(circle_at_left_center,rgba(255,100,156,0.08),transparent_32%)]" />
               <div className="relative flex h-full flex-col justify-between gap-8">
                 <div>
                   <h3 className="text-3xl leading-tight text-white">{item.title}</h3>
