@@ -1,4 +1,5 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { sendLeadNotificationEmail } from "@/lib/lead-notifications";
 import { sendLeadToSheets } from "@/lib/sheets";
 import { createSupabaseServerClient, type LeadInsert } from "@/lib/supabase";
 import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
@@ -46,7 +47,6 @@ export async function POST(request: Request) {
   }
 
   const supabase = createSupabaseServerClient();
-  let leadId: string | null = null;
 
   if (!supabase) {
     return NextResponse.json(
@@ -57,7 +57,9 @@ export async function POST(request: Request) {
             ? {
                 missing: [
                   !process.env.NEXT_PUBLIC_SUPABASE_URL ? "NEXT_PUBLIC_SUPABASE_URL" : null,
-                  !process.env.SUPABASE_SERVICE_ROLE_KEY && !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY && !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
+                  !process.env.SUPABASE_SERVICE_ROLE_KEY &&
+                  !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY &&
+                  !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
                     ? "SUPABASE_SERVICE_ROLE_KEY o NEXT_PUBLIC_SUPABASE_ANON_KEY"
                     : null
                 ].filter(Boolean)
@@ -70,15 +72,16 @@ export async function POST(request: Request) {
 
   const { data, error } = await supabase.from("leads").insert(lead).select("id").single();
 
-    if (error) {
-      console.error("[leads] supabase insert error", {
-        code: error.code,
-        message: error.message,
-        details: error.details,
-        hint: error.hint
-      });
+  if (error) {
+    console.error("[leads] supabase insert error", {
+      code: error.code,
+      message: error.message,
+      details: error.details,
+      hint: error.hint
+    });
 
-      const debug = process.env.NODE_ENV === "development"
+    const debug =
+      process.env.NODE_ENV === "development"
         ? {
             code: error.code,
             details: error.details,
@@ -87,33 +90,43 @@ export async function POST(request: Request) {
           }
         : undefined;
 
-      return NextResponse.json(
-        {
-          error: "No se pudo guardar el lead en Supabase.",
-          debug
-        },
-        { status: 500 }
-      );
-    }
+    return NextResponse.json(
+      {
+        error: "No se pudo guardar el lead en Supabase.",
+        debug
+      },
+      { status: 500 }
+    );
+  }
 
-    leadId = data?.id ?? null;
+  const leadId = data?.id ?? null;
+  const downstreamPayload = {
+    type: "lead_brief",
+    lead_id: leadId,
+    ...lead
+  };
+
+  const notification = await sendLeadNotificationEmail(downstreamPayload).catch((error) => {
+    console.error("[leads] notification email error", error);
+    return { ok: false, skipped: false, reason: "No se pudo enviar el email de notificacion." };
+  });
+
+  if (!notification.ok && !notification.skipped) {
+    console.error("[leads] notification email failed", notification.reason);
+  }
 
   let sheets: { ok: boolean; skipped: boolean } | null = null;
 
   if (process.env.NODE_ENV === "development") {
-    sheets = await sendLeadToSheets({
-      type: "lead_brief",
-      lead_id: leadId,
-      ...lead
-    }).catch(() => ({ ok: false, skipped: false }));
+    sheets = await sendLeadToSheets(downstreamPayload).catch(() => ({ ok: false, skipped: false }));
   } else {
-    void sendLeadToSheets({
-      type: "lead_brief",
-      lead_id: leadId,
-      ...lead
-    }).catch(() => null);
+    void sendLeadToSheets(downstreamPayload).catch(() => null);
   }
 
-  return NextResponse.json({ ok: true, leadId, simulated: !supabase, sheets });
+  return NextResponse.json({
+    ok: true,
+    leadId,
+    notification: process.env.NODE_ENV === "development" ? notification : undefined,
+    sheets
+  });
 }
-

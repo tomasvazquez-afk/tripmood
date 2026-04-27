@@ -50,26 +50,6 @@ function validate(values: FormValues): FormErrors {
   return errors;
 }
 
-function buildLeadMailto(values: FormValues) {
-  const subject = `Nueva consulta desde la web - ${values.name.trim() || "Sin nombre"}`;
-  const body = [
-    `Nombre: ${values.name.trim() || "Sin especificar"}`,
-    `Email: ${values.email.trim() || "Sin especificar"}`,
-    `WhatsApp: ${values.whatsapp.trim() || "Sin especificar"}`,
-    `Tipo de viaje: ${values.tripType.trim() || "Sin especificar"}`,
-    `Cantidad de viajeros: ${values.travelersCount.trim() || "Sin especificar"}`,
-    `Fecha estimada: ${values.travelDateEstimate.trim() || "Sin especificar"}`,
-    `Mensaje: ${values.message.trim() || "Sin mensaje"}`
-  ].join("\n");
-
-  const params = new URLSearchParams({
-    subject,
-    body
-  });
-
-  return `mailto:${siteContent.brand.email}?${params.toString()}`;
-}
-
 export function BriefForm() {
   const [values, setValues] = useState<FormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -82,7 +62,6 @@ export function BriefForm() {
   const submitLabel = useMemo(() => {
     return isSubmitting ? "Enviando formulario..." : "Quiero empezar a planificar mi viaje";
   }, [isSubmitting]);
-  const formAction = `mailto:${siteContent.brand.email}`;
 
   const handleChange = (field: keyof FormValues, value: string) => {
     setValues((current) => ({ ...current, [field]: value }));
@@ -127,7 +106,6 @@ export function BriefForm() {
 
     setIsSubmitting(true);
     setServerError(null);
-    const leadMailto = buildLeadMailto(values);
 
     const tracking = getTrackingContext();
 
@@ -179,7 +157,6 @@ export function BriefForm() {
         setIsSuccess(true);
         setValues(initialValues);
       });
-      window.location.href = leadMailto;
     } catch (error) {
       const message = error instanceof Error ? error.message : null;
       setServerError(message || "Hubo un problema al enviar tu brief. Proba de nuevo o escribinos por WhatsApp.");
@@ -222,7 +199,6 @@ export function BriefForm() {
               </div>
             ) : (
               <form
-                action={formAction}
                 className="grid gap-5"
                 onSubmit={handleSubmit}
                 onFocusCapture={handleStart}
