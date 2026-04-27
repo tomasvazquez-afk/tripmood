@@ -38,7 +38,7 @@ export function FinalCta() {
               }}
               className="button-secondary"
             >
-              Completa el formulario
+              Completá el formulario
             </button>
           </div>
         </div>
