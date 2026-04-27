@@ -1,10 +1,11 @@
 import { siteContent } from "@/content/site-content";
 import { normalizePhone } from "@/lib/utils";
 
-const baseMessage = "Hola HaruTravel, Quiero empezar a planear un viaje y me gustaría recibir más información 😊";
+const baseMessage = "Hola! Quiero empezar a planear un viaje y me gustaría recibir más información :)";
 
 export function buildWhatsAppMessage(extra?: string) {
-  return [baseMessage, extra].filter(Boolean).join(" ");
+  void extra;
+  return baseMessage;
 }
 
 export function buildWhatsAppUrl(extra?: string) {
