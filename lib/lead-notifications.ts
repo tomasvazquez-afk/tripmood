@@ -24,6 +24,20 @@ function escapeHtml(value: unknown) {
     .replace(/'/g, "&#39;");
 }
 
+function normalizeEmailEnvValue(value: string | undefined) {
+  const trimmed = value?.trim();
+  if (!trimmed) return "";
+
+  const first = trimmed[0];
+  const last = trimmed[trimmed.length - 1];
+
+  if ((first === `"` && last === `"`) || (first === "'" && last === "'")) {
+    return trimmed.slice(1, -1).trim();
+  }
+
+  return trimmed;
+}
+
 function buildRows(lead: LeadNotificationPayload) {
   return [
     ["Nombre", lead.name],
@@ -77,9 +91,9 @@ function buildHtmlEmail(lead: LeadNotificationPayload) {
 export async function sendLeadNotificationEmail(
   lead: LeadNotificationPayload
 ): Promise<LeadNotificationResult> {
-  const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.LEAD_NOTIFICATION_FROM;
-  const to = process.env.LEAD_NOTIFICATION_TO || siteContent.brand.email;
+  const apiKey = normalizeEmailEnvValue(process.env.RESEND_API_KEY);
+  const from = normalizeEmailEnvValue(process.env.LEAD_NOTIFICATION_FROM);
+  const to = normalizeEmailEnvValue(process.env.LEAD_NOTIFICATION_TO) || siteContent.brand.email;
 
   if (!apiKey) {
     return { ok: false, skipped: true, reason: "RESEND_API_KEY no configurada." };
