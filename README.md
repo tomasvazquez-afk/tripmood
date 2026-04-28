@@ -27,7 +27,8 @@ Home comercial premium para HaruTravel construida con Next.js App Router, TypeSc
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY` (recomendado para inserts desde API routes)
 - `SHEETS_WEBHOOK_URL`
-- `RESEND_API_KEY` para enviar avisos automáticos de nuevos leads
+- `BREVO_API_KEY` para enviar avisos automáticos de nuevos leads con Brevo
+- `RESEND_API_KEY` fallback opcional si Brevo no está configurado
 - `LEAD_NOTIFICATION_FROM` remitente verificado para los avisos de leads
 - `LEAD_NOTIFICATION_TO` destino de los avisos de leads
 - `NEXT_PUBLIC_GA_MEASUREMENT_ID` opcional

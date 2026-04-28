@@ -12,6 +12,11 @@ type LeadNotificationResult =
 
 const resendFallbackFrom = "HaruTravel <onboarding@resend.dev>";
 
+type EmailIdentity = {
+  email: string;
+  name?: string;
+};
+
 function formatValue(value: unknown) {
   if (value === null || value === undefined || value === "") return "Sin especificar";
   return String(value);
@@ -38,6 +43,27 @@ function normalizeEmailEnvValue(value: string | undefined) {
   }
 
   return trimmed;
+}
+
+function parseEmailIdentity(value: string): EmailIdentity {
+  const match = value.match(/^(.*?)<([^>]+)>$/);
+
+  if (!match) {
+    return { email: value.trim() };
+  }
+
+  const name = match[1].trim().replace(/^["']|["']$/g, "");
+  const email = match[2].trim();
+
+  return name ? { email, name } : { email };
+}
+
+function parseRecipients(value: string): EmailIdentity[] {
+  return value
+    .split(/[;,]/)
+    .map((recipient) => recipient.trim())
+    .filter(Boolean)
+    .map(parseEmailIdentity);
 }
 
 function buildRows(lead: LeadNotificationPayload) {
@@ -90,6 +116,28 @@ function buildHtmlEmail(lead: LeadNotificationPayload) {
     </div>`;
 }
 
+async function sendWithBrevo(lead: LeadNotificationPayload, apiKey: string, from: string, to: string) {
+  return fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "api-key": apiKey,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      sender: parseEmailIdentity(from),
+      to: parseRecipients(to),
+      replyTo: {
+        email: lead.email,
+        name: lead.name
+      },
+      subject: `Nuevo lead HaruTravel - ${lead.name}`,
+      textContent: buildTextEmail(lead),
+      htmlContent: buildHtmlEmail(lead)
+    })
+  });
+}
+
 async function sendWithResend(lead: LeadNotificationPayload, from: string, to: string) {
   return fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -111,16 +159,32 @@ async function sendWithResend(lead: LeadNotificationPayload, from: string, to: s
 export async function sendLeadNotificationEmail(
   lead: LeadNotificationPayload
 ): Promise<LeadNotificationResult> {
-  const apiKey = normalizeEmailEnvValue(process.env.RESEND_API_KEY);
+  const brevoApiKey = normalizeEmailEnvValue(process.env.BREVO_API_KEY);
+  const resendApiKey = normalizeEmailEnvValue(process.env.RESEND_API_KEY);
   const from = normalizeEmailEnvValue(process.env.LEAD_NOTIFICATION_FROM);
   const to = normalizeEmailEnvValue(process.env.LEAD_NOTIFICATION_TO) || siteContent.brand.email;
 
-  if (!apiKey) {
-    return { ok: false, skipped: true, reason: "RESEND_API_KEY no configurada." };
-  }
-
   if (!from) {
     return { ok: false, skipped: true, reason: "LEAD_NOTIFICATION_FROM no configurada." };
+  }
+
+  if (brevoApiKey) {
+    const brevoResponse = await sendWithBrevo(lead, brevoApiKey, from, to);
+
+    if (brevoResponse.ok) {
+      return { ok: true, skipped: false };
+    }
+
+    const brevoDetails = await brevoResponse.text().catch(() => "");
+    return {
+      ok: false,
+      skipped: false,
+      reason: brevoDetails || `Brevo respondio con status ${brevoResponse.status}.`
+    };
+  }
+
+  if (!resendApiKey) {
+    return { ok: false, skipped: true, reason: "BREVO_API_KEY o RESEND_API_KEY no configurada." };
   }
 
   const response = await sendWithResend(lead, from, to);
