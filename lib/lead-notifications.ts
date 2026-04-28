@@ -10,6 +10,8 @@ type LeadNotificationResult =
   | { ok: false; skipped: true; reason: string }
   | { ok: false; skipped: false; reason: string };
 
+const resendFallbackFrom = "HaruTravel <onboarding@resend.dev>";
+
 function formatValue(value: unknown) {
   if (value === null || value === undefined || value === "") return "Sin especificar";
   return String(value);
@@ -88,6 +90,24 @@ function buildHtmlEmail(lead: LeadNotificationPayload) {
     </div>`;
 }
 
+async function sendWithResend(lead: LeadNotificationPayload, from: string, to: string) {
+  return fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${normalizeEmailEnvValue(process.env.RESEND_API_KEY)}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      from,
+      to,
+      reply_to: lead.email,
+      subject: `Nuevo lead HaruTravel - ${lead.name}`,
+      text: buildTextEmail(lead),
+      html: buildHtmlEmail(lead)
+    })
+  });
+}
+
 export async function sendLeadNotificationEmail(
   lead: LeadNotificationPayload
 ): Promise<LeadNotificationResult> {
@@ -103,24 +123,31 @@ export async function sendLeadNotificationEmail(
     return { ok: false, skipped: true, reason: "LEAD_NOTIFICATION_FROM no configurada." };
   }
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from,
-      to,
-      reply_to: lead.email,
-      subject: `Nuevo lead HaruTravel - ${lead.name}`,
-      text: buildTextEmail(lead),
-      html: buildHtmlEmail(lead)
-    })
-  });
+  const response = await sendWithResend(lead, from, to);
 
   if (!response.ok) {
     const details = await response.text().catch(() => "");
+
+    if (
+      response.status === 403 &&
+      details.includes("domain is not verified") &&
+      from !== resendFallbackFrom
+    ) {
+      const fallbackResponse = await sendWithResend(lead, resendFallbackFrom, to);
+
+      if (fallbackResponse.ok) {
+        return { ok: true, skipped: false };
+      }
+
+      const fallbackDetails = await fallbackResponse.text().catch(() => "");
+
+      return {
+        ok: false,
+        skipped: false,
+        reason: fallbackDetails || `Resend respondio con status ${fallbackResponse.status}.`
+      };
+    }
+
     return {
       ok: false,
       skipped: false,
